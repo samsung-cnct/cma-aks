@@ -12,7 +12,7 @@ import (
 	"github.com/Azure/go-autorest/autorest/azure/auth"
 
 	"github.com/Azure/azure-sdk-for-go/services/containerservice/mgmt/2018-03-31/containerservice"
-	"github.com/Azure/go-autorest/autorest/to" // Not sure what this is doing
+	"github.com/Azure/go-autorest/autorest/to"
 )
 
 // ClusterParameters are used to create a new aks cluster

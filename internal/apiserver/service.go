@@ -2,7 +2,7 @@ package apiserver
 
 import (
 	"github.com/juju/loggo"
-	"gitlab.com/mvenezia/cma-aks/pkg/util"
+	"github.com/samsung-cnct/cma-aks/pkg/util"
 )
 
 var (

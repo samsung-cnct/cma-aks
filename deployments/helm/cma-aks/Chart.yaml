@@ -4,9 +4,9 @@ description: The Cluster Manager API AKS Helper
 keywords:
 - hybridstack
 - api
-home: https://gitlab.com/mvenezia/cma-aks
+home: https://github.com/samsung-cnct/cma-aks
 sources:
-- https://gitlab.com/mvenezia/cma-aks
+- https://github.com/samsung-cnct/cma-aks
 maintainers:
 - name: Michael Venezia
   email: mvenezia@gmail.com

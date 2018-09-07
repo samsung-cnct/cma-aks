@@ -5,7 +5,7 @@
 
 name: cma-aks
 image:
-  repo: registry.gitlab.com/mvenezia/cma-aks:latest
+  repo: registry.github.com/samsung-cnct/cma-aks:latest
 
 port: 80
 service:

@@ -2,8 +2,8 @@ package apiserver
 
 import (
 	"fmt"
-	pb "gitlab.com/mvenezia/cma-aks/pkg/generated/api"
-	az "gitlab.com/mvenezia/cma-aks/pkg/util/azureutil"
+	pb "github.com/samsung-cnct/cma-aks/pkg/generated/api"
+	az "github.com/samsung-cnct/cma-aks/pkg/util/azureutil"
 	"golang.org/x/net/context"
 )
 
@@ -63,7 +63,6 @@ func (s *Server) GetCluster(ctx context.Context, in *pb.GetClusterMsg) (*pb.GetC
 		return nil, fmt.Errorf("cannot get aks client: %v", err)
 	}
 
-	// FIXME: need to add resourceGroupName to api
 	c, err := az.GetCluster(ctx, clusterClient, in.Name)
 	if err != nil {
 		return nil, err
@@ -87,7 +86,6 @@ func (s *Server) DeleteCluster(ctx context.Context, in *pb.DeleteClusterMsg) (*p
 		return nil, fmt.Errorf("cannot get aks client: %v", err)
 	}
 
-	// FIXME: need to add resourceGroup to api
 	result, err := az.DeleteCluster(ctx, clusterClient, in.Name)
 	if err != nil {
 		return nil, err

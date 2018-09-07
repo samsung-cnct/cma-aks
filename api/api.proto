@@ -28,12 +28,12 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
     version: "v0.1.0";
     contact: {
         name: "Michael Venezia";
-        url: "https://gitlab.com/mvenezia/cma-aks";
+        url: "https://github.com/samsung-cnct/cma-aks";
         email: "mvenezia@gmail.com";
     };
   };
   external_docs: {
-    url: "https://gitlab.com/mvenezia/cma-aks";
+    url: "https://github.com/samsung-cnct/cma-aks";
     description: "More about Cluster Manager AKS Helper API";
   }
   schemes: HTTPS;

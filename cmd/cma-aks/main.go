@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gitlab.com/mvenezia/cma-aks/cmd/cma-aks/cmd"
+	"github.com/samsung-cnct/cma-aks/cmd/cma-aks/cmd"
 )
 
 func main() {
