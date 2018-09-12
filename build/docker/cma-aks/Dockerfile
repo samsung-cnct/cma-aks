@@ -11,6 +11,7 @@ RUN make -f build/Makefile container-build
 
 # Now that we have build a static binary, we can stuff it in a bare-bones alpine image
 FROM alpine
+RUN apk update && apk add ca-certificates
 COPY --from=0 /go/src/github.com/samsung-cnct/cma-aks/cma-aks /cma-aks
 
 ENTRYPOINT ["/cma-aks"]
