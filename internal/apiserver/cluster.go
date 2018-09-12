@@ -11,10 +11,10 @@ func (s *Server) CreateCluster(ctx context.Context, in *pb.CreateClusterMsg) (*p
 
 	// check if resource group exists
 	groupsClient := az.GetGroupsClient(in.Provider.Azure.Credentials.Tenant, in.Provider.Azure.Credentials.AppId, in.Provider.Azure.Credentials.Password, in.Provider.Azure.Credentials.SubscriptionId)
-	exists := az.CheckForGroup(ctx, groupsClient, in.Provider.Name)
+	exists := az.CheckForGroup(ctx, groupsClient, in.Name)
 	// create group if it does not exist
 	if !exists {
-		_, err := az.CreateGroup(ctx, groupsClient, in.Provider.Name, in.Provider.Azure.Location)
+		_, err := az.CreateGroup(ctx, groupsClient, in.Name, in.Provider.Azure.Location)
 		if err != nil {
 			return nil, fmt.Errorf("error creating resource group: %v", err)
 		}
