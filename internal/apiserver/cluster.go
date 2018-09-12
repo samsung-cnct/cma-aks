@@ -29,7 +29,7 @@ func (s *Server) CreateCluster(ctx context.Context, in *pb.CreateClusterMsg) (*p
 	// set parameters for new cluster
 	var parameters az.ClusterParameters
 
-	parameters.Name = in.Provider.Name
+	parameters.Name = in.Name
 	parameters.Location = in.Provider.Azure.Location
 	parameters.KubernetesVersion = in.Provider.K8SVersion
 	parameters.ClientID = in.Provider.Azure.ClusterAccount.ClientId
@@ -56,7 +56,7 @@ func (s *Server) CreateCluster(ctx context.Context, in *pb.CreateClusterMsg) (*p
 		return nil, fmt.Errorf("error creating cluster: %v", err)
 	}
 
-	clusterID := "/subscriptions/" + in.Provider.Azure.Credentials.SubscriptionId + "/resourcegroups/" + in.Provider.Name + "-group/providers/Microsoft.ContainerService/managedClusters/" + in.Provider.Name
+	clusterID := "/subscriptions/" + in.Provider.Azure.Credentials.SubscriptionId + "/resourcegroups/" + parameters.Name + "-group/providers/Microsoft.ContainerService/managedClusters/" + parameters.Name
 
 	return &pb.CreateClusterReply{
 		Ok: true,
