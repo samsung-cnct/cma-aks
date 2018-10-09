@@ -83,7 +83,7 @@ type DeleteClusterOutput struct {
 }
 
 // ListClusterInput is used to retrieve a list of clusters
-type ListClusterInput struct {}
+type ListClusterInput struct{}
 
 // ListClusterOutput shows the list of available clusters
 type ListClusterOutput struct {

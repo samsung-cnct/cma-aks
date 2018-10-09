@@ -14,7 +14,7 @@ import (
 )
 
 type AKS struct {
-	Client containerservice.ManagedClustersClient
+	Client  containerservice.ManagedClustersClient
 	Context context.Context
 }
 

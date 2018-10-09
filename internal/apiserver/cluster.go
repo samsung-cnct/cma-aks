@@ -52,7 +52,7 @@ func (s *Server) CreateCluster(ctx context.Context, in *pb.CreateClusterMsg) (*p
 	}
 
 	// create cluster
-	output, err := aks.CreateCluster(az.CreateClusterInput{
+	_, err = aks.CreateCluster(az.CreateClusterInput{
 		Name:         in.Name,
 		Location:     in.Provider.Azure.Location,
 		K8sVersion:   in.Provider.K8SVersion,
@@ -72,7 +72,7 @@ func (s *Server) CreateCluster(ctx context.Context, in *pb.CreateClusterMsg) (*p
 		Cluster: &pb.ClusterItem{
 			Id:     clusterID,
 			Name:   in.Name,
-			Status: output.Status,
+			Status: pb.ClusterStatus_PROVISIONING,
 		},
 	}, nil
 }
@@ -99,12 +99,18 @@ func (s *Server) GetCluster(ctx context.Context, in *pb.GetClusterMsg) (*pb.GetC
 	if err != nil {
 		return nil, err
 	}
+	// TODO make this better
+	enumeratedStatus, found := pb.ClusterStatus_value[output.Cluster.Status]
+	if !found {
+		enumeratedStatus = 0
+	}
+
 	return &pb.GetClusterReply{
 		Ok: true,
 		Cluster: &pb.ClusterDetailItem{
 			Id:         output.Cluster.ID,
 			Name:       output.Cluster.Name,
-			Status:     output.Cluster.Status,
+			Status:     pb.ClusterStatus(enumeratedStatus),
 			Kubeconfig: output.Cluster.Kubeconfig,
 		},
 	}, nil
@@ -233,7 +239,7 @@ func (s *Server) UpgradeCluster(ctx context.Context, in *pb.UpgradeClusterMsg) (
 	aks.SetClient(newClient.Client)
 
 	// upgrade cluster
-	output, err := aks.UpgradeCluster(az.UpgradeClusterInput{
+	_, err = aks.UpgradeCluster(az.UpgradeClusterInput{
 		Name:       in.Name,
 		K8sVersion: in.Provider.K8SVersion,
 	})
@@ -248,7 +254,7 @@ func (s *Server) UpgradeCluster(ctx context.Context, in *pb.UpgradeClusterMsg) (
 		Cluster: &pb.ClusterItem{
 			Id:     clusterID,
 			Name:   in.Name,
-			Status: output.Status,
+			Status: pb.ClusterStatus_RECONCILING,
 		},
 	}, nil
 }
