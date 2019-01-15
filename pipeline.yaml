@@ -5,6 +5,9 @@ builds:
     chart: cma-aks
     value: image.repo
     dockerContext: .
+  - image: samsung_cnct/kind
+    script: scripts/e2e-tests.sh
+    shell: /bin/bash
 deployments:
   - chart: cma-aks
     timeout: 600
