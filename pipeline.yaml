@@ -5,7 +5,7 @@ builds:
     chart: cma-aks
     value: image.repo
     dockerContext: .
-  - image: samsung_cnct/kind:prod
+  - image: quay.io/samsung_cnct/kind:prod
     script: scripts/e2e-tests.sh
     shell: /bin/bash
 deployments:
