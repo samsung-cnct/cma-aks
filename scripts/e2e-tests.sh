@@ -18,6 +18,10 @@ export KUBECONFIG=$(kind get kubeconfig-path)
 
 kubectl create clusterrolebinding superpowers --clusterrole=cluster-admin --user=system:serviceaccount:kube-system:default
 
+pwd
+kubectl get pods --all-namespaces
+kubectl describe pods --all-namespaces
+
 helm init --wait --debug
 
 helm install --name my-release stable/cert-manager --wait --debug
