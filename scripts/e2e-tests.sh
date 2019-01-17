@@ -12,7 +12,7 @@ trap finish EXIT
 
 service docker start
 
-kind create cluster --retain --wait=1m --loglevel=debug
+kind create cluster --wait=10m --loglevel=debug
 
 export KUBECONFIG=$(kind get kubeconfig-path)
 
