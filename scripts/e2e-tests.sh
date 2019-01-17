@@ -5,6 +5,11 @@ set -o nounset
 set -o pipefail
 set -o xtrace
 
+function finish {
+  kind delete cluster
+}
+trap finish EXIT
+
 service docker start
 
 kind create cluster --retain --wait=1m --loglevel=debug
@@ -29,5 +34,3 @@ helm install --name cluster-manager-api cnct/cluster-manager-api --wait --debug
 helm install --name cma-operator cnct/cma-operator --wait --debug
 
 # TODO: Add tests here
-
-kind delete cluster
