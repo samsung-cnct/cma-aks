@@ -10,6 +10,9 @@ function finish {
 }
 trap finish EXIT
 
+echo "The current environment contains these variables: $(env)"
+echo "The current directory is $(pwd)"
+
 service docker start
 
 kind create cluster --wait=10m --loglevel=debug
@@ -18,7 +21,7 @@ export KUBECONFIG=$(kind get kubeconfig-path)
 
 kubectl create clusterrolebinding superpowers --clusterrole=cluster-admin --user=system:serviceaccount:kube-system:default
 
-pwd
+echo "The current pods are:"
 kubectl get pods --all-namespaces
 kubectl describe pods --all-namespaces
 
