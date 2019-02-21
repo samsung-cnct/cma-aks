@@ -2,6 +2,7 @@
 
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+export CLUSTER_API_HTTP=${CLUSTER_API_HTTP:-https}
 export CLUSTER_API=${CLUSTER_API:-cluster-manager-api.cnct.io}
 export CLUSTER_API_PORT=${CLUSTER_API_PORT:-443}
 export CLUSTER_NAME=${CLUSTER_NAME:-aks-test-$(date +%s)}

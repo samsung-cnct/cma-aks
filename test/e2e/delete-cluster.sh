@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CLUSTER_API_HTTP=${CLUSTER_API_HTTP:-https}
 CLUSTER_API=${CLUSTER_API:-cluster-manager-api.cnct.io}
 CLUSTER_API_PORT=${CLUSTER_API_PORT:-443}
 CMA_CALLBACK_URL=${CMA_CALLBACK_URL:-https://webhook.site/#/15a7f31c-5b57-41fc-bd70-a8dec0f56442}
@@ -37,7 +38,7 @@ main() {
   required_envs
 
   curl -X DELETE \
-    "https://${CLUSTER_API}:${CLUSTER_API_PORT}/api/v1/cluster?name=${CLUSTER_NAME}&provider=azure&azure.app_id=${AZURE_CLIENT_ID}&azure.tenant=${AZURE_TENANT_ID}&azure.password=${AZURE_CLIENT_SECRET}&azure.subscription_id=${AZURE_SUBSCRIPTION_ID}&callback.url=${CMA_CALLBACK_URL}&callback.request_id=${CMA_CALLBACK_REQUESTID}" \
+    "${CLUSTER_API_HTTP}://${CLUSTER_API}:${CLUSTER_API_PORT}/api/v1/cluster?name=${CLUSTER_NAME}&provider=azure&azure.app_id=${AZURE_CLIENT_ID}&azure.tenant=${AZURE_TENANT_ID}&azure.password=${AZURE_CLIENT_SECRET}&azure.subscription_id=${AZURE_SUBSCRIPTION_ID}&callback.url=${CMA_CALLBACK_URL}&callback.request_id=${CMA_CALLBACK_REQUESTID}" \
     -H 'Cache-Control: no-cache' \
     -H 'Content-Type: application/json' \
     -iks
