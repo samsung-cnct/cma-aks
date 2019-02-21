@@ -1,5 +1,5 @@
 # CMA Azure AKS Helper API
-[![Build Status](https://jenkins.migrations.cnct.io/buildStatus/icon?job=cma-aks/master)](https://jenkins.migrations.cnct.io/job/cma-aks/job/master/)
+[![Build Status](https://jenkins.cnct.io/buildStatus/icon?job=cma-aks/master)](https://jenkins.cnct.io/job/cma-aks/job/master/)
 
 ## Overview
 
