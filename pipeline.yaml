@@ -1,10 +1,22 @@
 type: chart
+envValues:
+  - envVar: AZURE_CLIENT_ID
+    secret: jobs/cma-aks/AZURE_CLIENT_ID
+  - envVar: AZURE_CLIENT_SECRET
+    secret: jobs/cma-aks/AZURE_CLIENT_SECRET
+  - envVar: AZURE_TENANT_ID
+    secret: jobs/cma-aks/AZURE_TENANT_ID
+  - envVar: AZURE_SUBSCRIPTION_ID
+    secret: jobs/cma-aks/AZURE_SUBSCRIPTION_ID
 builds:
   - image: samsung_cnct/cma-aks
     context: cma-aks
     chart: cma-aks
     value: image.repo
     dockerContext: .
+  - image: quay.io/samsung_cnct/kind:prod
+    script: scripts/e2e-tests.sh
+    shell: /bin/bash
 deployments:
   - chart: cma-aks
     timeout: 600

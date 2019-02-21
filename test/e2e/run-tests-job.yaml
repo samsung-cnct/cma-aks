@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cma-aks-e2e-tests
+spec:
+  template:
+    spec:
+      containers:
+        - name: cma-aks-e2e-tests
+          image: quay.io/samsung_cnct/kind:prod
+          env:
+            - name: AZURE_CLIENT_ID
+              value: ${AZURE_CLIENT_ID}
+            - name: AZURE_CLIENT_SECRET
+              value: ${AZURE_CLIENT_SECRET}
+            - name: AZURE_TENANT_ID
+              value: ${AZURE_TENANT_ID}
+            - name: AZURE_SUBSCRIPTION_ID
+              value: ${AZURE_SUBSCRIPTION_ID}
+          volumeMounts:
+            - name: test
+              mountPath: /test
+          command: ["/test/full-test.sh"]
+      restartPolicy: Never
+      volumes:
+        - name: test
+          hostPath:
+            path: /root/e2e
+  backoffLimit: 4

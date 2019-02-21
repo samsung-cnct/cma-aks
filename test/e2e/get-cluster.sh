@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CLUSTER_API_HTTP=${CLUSTER_API_HTTP:-https}
-CLUSTER_API=${CLUSTER_API:-cluster-manager-api.cnct.io}
-CLUSTER_API_PORT=${CLUSTER_API_PORT:-443}
+CLUSTER_API_HTTP=${CLUSTER_API_HTTP:-http}
+CLUSTER_API=${CLUSTER_API:-cluster-manager-api-cluster-manager-api}
+CLUSTER_API_PORT=${CLUSTER_API_PORT:-80}
 CURL_OPTIONS=${CURL_OPTIONS:-iks}
 
 [[ -n $DEBUG ]] && set -o xtrace

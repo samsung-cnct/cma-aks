@@ -2,14 +2,14 @@
 
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-export CLUSTER_API_HTTP=${CLUSTER_API_HTTP:-https}
-export CLUSTER_API=${CLUSTER_API:-cluster-manager-api.cnct.io}
-export CLUSTER_API_PORT=${CLUSTER_API_PORT:-443}
-export CLUSTER_NAME=${CLUSTER_NAME:-aks-test-$(date +%s)}
+export CLUSTER_API_HTTP=${CLUSTER_API_HTTP:-http}
+export CLUSTER_API=${CLUSTER_API:-cluster-manager-api-cluster-manager-api}
+export CLUSTER_API_PORT=${CLUSTER_API_PORT:-80}
+export CLUSTER_NAME=${CLUSTER_NAME:-jenkins-test-$(date +%s)}
 export CLUSTER_API_NAMESPACE=${CLUSTER_API_NAMESPACE:-cma}
-export K8S_VERSION=${K8S_VERSION:-1.11.5}
-export CMA_CALLBACK_URL=${CMA_CALLBACK_URL:-https://webhook.site/#/15a7f31c-5b57-41fc-bd70-a8dec0f56442}
-export CMA_CALLBACK_REQUESTID=${CMA_CALLBACK_REQUESTID:-56789}
+export K8S_VERSION=${K8S_VERSION:-1.12.5}
+export CMA_CALLBACK_URL=${CMA_CALLBACK_URL:-https://example.cnct.io}
+export CMA_CALLBACK_REQUESTID=${CMA_CALLBACK_REQUESTID:-1}
 
 # azure specific inputs
 export AZURE_LOCATION=${AZURE_LOCATION:-westus}
