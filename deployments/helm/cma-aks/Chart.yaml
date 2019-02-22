@@ -1,5 +1,5 @@
 name: cma-aks
-version: 0.1.4
+version: 0.1.5
 description: The Cluster Manager API AKS Helper
 keywords:
 - hybridstack
