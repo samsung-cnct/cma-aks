@@ -68,5 +68,17 @@ func CreateGroup(ctx context.Context, groupsClient resources.GroupsClient, resou
 	return grp, nil
 }
 
-// TODO: DeleteGroup will delete a group if it is empty
-// TODO: make sure not to delete groups that contain resources still
+// DeleteGroup will delete an azure resource group
+func DeleteGroup(ctx context.Context, groupsClient resources.GroupsClient, resourceName string) error {
+	// generate resource group name based on resource name
+	resourceGroupName := resourceName + "-group"
+
+	_, err := groupsClient.Delete(
+		ctx,
+		resourceGroupName,
+	)
+	if err != nil {
+		return fmt.Errorf("error while deleting resource group %s, error message: %v", resourceGroupName, err)
+	}
+	return nil
+}

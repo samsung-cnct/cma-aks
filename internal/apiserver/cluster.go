@@ -165,6 +165,12 @@ func (s *Server) DeleteCluster(ctx context.Context, in *pb.DeleteClusterMsg) (*p
 	if enumeratedStatus != pb.ClusterStatus_STOPPING {
 		logger.Errorf("expected status -->%s<-- on stopping but instead received -->%s<-- on cluster -->%s<--! ... ", pb.ClusterStatus_PROVISIONING, enumeratedStatus, in.Name)
 	}
+	// delete resource group
+	groupsClient := az.GetGroupsClient(in.Credentials.Tenant, in.Credentials.AppId, in.Credentials.Password, in.Credentials.SubscriptionId)
+	deleteGroupErr := az.DeleteGroup(ctx, groupsClient, in.Name)
+	if err != nil {
+		return nil, fmt.Errorf("error deleting resource group: %v", deleteGroupErr)
+	}
 
 	return &pb.DeleteClusterReply{
 		Ok:     true,

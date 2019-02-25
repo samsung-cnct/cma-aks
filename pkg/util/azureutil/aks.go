@@ -164,8 +164,6 @@ func (a *AKS) DeleteCluster(input DeleteClusterInput) (DeleteClusterOutput, erro
 	}
 
 	return output, err
-
-	// TODO: delete resource group also, if nothing else is in it
 }
 
 // ListClusters will list all clusters in the subscription
